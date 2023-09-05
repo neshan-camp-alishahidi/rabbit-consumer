@@ -21,9 +21,10 @@ public class MessageListener {
     @RabbitListener(queues = "q.message")
     public void listen(CustomMessage message, Channel channel) {
         log.info("Received message {}", message);
-        String emailMessage = (String) template.convertSendAndReceive("x.post-create", "send-email", message);
-        String smsMessage = (String) template.convertSendAndReceive("x.post-create", "send-sms", message);
-        System.out.println(emailMessage);
-        System.out.println(smsMessage);
+        throw new RuntimeException("Runtime exception");
+//        String emailMessage = (String) template.convertSendAndReceive("x.post-create", "send-email", message);
+//        String smsMessage = (String) template.convertSendAndReceive("x.post-create", "send-sms", message);
+//        System.out.println(emailMessage);
+//        System.out.println(smsMessage);
     }
 }
